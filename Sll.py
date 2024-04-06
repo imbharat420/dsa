@@ -66,6 +66,20 @@ class SLL:
                         temp.next = temp.next.next
                         break
                     temp = temp.next
+    def __iter__(self):
+        return SLLIterator(self.start)
+
+class SLLIterator:
+    def __init__(self,start):
+        self.current=start
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        data=self.current.item
+        self.current=self.current.next
+        return data
     
         
 l1 = SLL()
@@ -80,3 +94,7 @@ l1.delete_first()
 l1.print_list()
 #chk = l1.search(49)
 #print(chk)
+
+
+for x in l1:
+    print(x,end=" ")
