@@ -50,14 +50,33 @@ class SLL:
             while temp.next.next is not None:
                 temp = temp.next
             temp.next = None
+    def delete_item(self,data):
+        if self.start is None:
+            pass
+        elif self.start.next is None:
+            if self.start.item == data:
+                self.start = None
+        else:
+            temp = self.start
+            if temp.item == data:
+                self.start = temp.next
+            else:
+                while temp.next is not None:
+                    if temp.next.item == data:
+                        temp.next = temp.next.next
+                        break
+                    temp = temp.next
+    
         
 l1 = SLL()
 l1.insert_at_start(30)
 l1.insert_at_end(49)
 l1.insert_at_end(59)
 l1.insert_at_end(69)
-l1.insert_after(l1.search(59),33)
+l1.insert_after(l1.search(69),33)
+# l1.delete_item(33)
+# l1.delete_last()
+l1.delete_first()
 l1.print_list()
-
 #chk = l1.search(49)
 #print(chk)
