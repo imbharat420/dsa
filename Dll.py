@@ -60,8 +60,15 @@ class DLL:
     def delete_item(self,data):
         if self.is_empty():
             pass
-        elif self.start.next is None:
-            self.start = None
-        elif self.start.next == None:
-            if self.start.item == data:
-                self.sart=None
+        else:
+            temp =self.start
+            while temp is not None:
+                if temp.item is not None:
+                    if temp.next is not None:
+                        temp.next.prev = temp.prev
+                    if temp.prev is not None:
+                        temp.prev.next = temp.next
+                    else:
+                        self.start=temp.next
+                    break
+                temp=temp.next
