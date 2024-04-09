@@ -52,3 +52,31 @@ class CSll:
                 self.last = None
             else:
                 self.last.next = self.last.next.next
+    def delete_last(self):    
+        if not self.is_empty():
+            if self.last.next == self.last
+                self.last = None
+            else:
+                temp = self.last.next
+                while temp.next!=self.last:
+                    temp=temp.next
+                temp.next=self.last.next
+                self.last=temp
+    def delete_item(self,data):
+        if not self.is_empty():
+            if self.last.item == data:
+                self.last = None
+            else:
+                if self.last.next.item == data:
+                    return self.delete_first()
+                
+                temp=self.last.next 
+                while temp!=self.last:
+                    if temp.next == self.last:
+                        if self.last.item == data:
+                         self.delete_last()
+                         break
+                    if temp.item == data:
+                        temp.next=temp.next.next
+                        break
+                    temp=temp.next
