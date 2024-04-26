@@ -5,7 +5,7 @@ class Node:
 
 class CSll:
     def __init__(self,last=None):
-        self.last = None
+        self.last = last
     def is_empty(self):
         return self.last == None
     def insert_at_start(self,item):
@@ -30,11 +30,11 @@ class CSll:
             return None
         temp=self.last.next
         while temp != self.last:
-            if temp.item == data:
+            if temp.item == item:
                 return temp
             temp=temp.next
     def insert_after(self,temp,item):
-        if temp is not none:
+        if temp is not None:
             n=Node(item,temp.next)
             temp.next=n
             if temp == self.last:
@@ -48,13 +48,13 @@ class CSll:
             print(temp.item) #This because self.last is in 1st position or in last Position when loop is false
     def delete_first(self):    
         if not self.is_empty():
-            if self.last.next == self.last
+            if self.last.next == self.last:
                 self.last = None
             else:
                 self.last.next = self.last.next.next
     def delete_last(self):    
         if not self.is_empty():
-            if self.last.next == self.last
+            if self.last.next == self.last:
                 self.last = None
             else:
                 temp = self.last.next
@@ -80,3 +80,14 @@ class CSll:
                         temp.next=temp.next.next
                         break
                     temp=temp.next
+
+
+
+cls = CSll()
+cls.insert_at_start(1)
+cls.insert_at_last(2) 
+cls.insert_after(cls.search(2),3) 
+cls.insert_after(cls.search(3),4) 
+cls.insert_after(cls.search(2),5) 
+
+cls.print_list()
