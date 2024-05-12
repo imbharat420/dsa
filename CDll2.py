@@ -19,7 +19,7 @@ class CDll:
             n.next=self.start
             n.prev=self.start.prev
             self.start.prev.next=n
-            self.start.prev=n
+            self.start.prev=n 
             self.start=n
     def insert_at_last(self,data):
         n=Node(data)
@@ -75,13 +75,47 @@ class CDll:
             while temp is not self.start:
                 print(temp.item,end=' ')
                 temp=temp.next
-            
+
+    def delete_start(self):
+       if self.start is not None:
+            if self.start.next == self.start:   #Agr only 1 element
+               self.start = None
+            else:
+                self.start.prev.next = self.start.next
+                self.start.next.prev = self.start.prev
+                self.start = self.start.next 
+    def delete_last(self):
+        if self.start is not None:
+            if self.start.next == self.start:   #Agr only 1 element
+               self.start = None
+            else:
+                self.start.prev.prev.next = self.start
+                self.start.prev=self.start.prev.prev
+    def delete_item(self,data):
+        if self.start is not None:
+            temp=self.start
+            if temp.item == data:
+                self.delete_start()
+            else:
+                temp = temp.next
+                while temp is not self.start:
+                    if temp.item == data:
+                        temp.next.prev=temp.prev
+                        temp.prev.next=temp.next
+    
+
+     
 cls = CDll()
-cls.insert_at_start(20)
-cls.insert_at_start(23)
-cls.insert_at_start(2)
-cls.insert_at_start(5)
-cls.insert_at_last(1)
-cls.insert_at_last(3)
+# cls.insert_at_start(20)
+# cls.insert_at_start(23)
+# cls.insert_at_start(2)
+cls.insert_at_start(50)
+
+cls.print_list()
+  
+# cls.delete_item(5)
 # cls.insert_after(cls.search(3),55)
+print("")
+cls.print_list()
+print("")
 cls.print_list()
