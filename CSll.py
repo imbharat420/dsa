@@ -63,23 +63,43 @@ class CSll:
                 temp.next=self.last.next
                 self.last=temp
     def delete_item(self,data):
-        if not self.is_empty():
-            if self.last.item == data:
-                self.last = None
+        if self.start is None: #if empty LL
+            pass
+        elif self.start.next is None: #if only one item in LL
+            if self.start.item == data:
+                self.start=None
+        else:
+            temp=self.start
+            if temp.item == data:
+                self.start=temp.next
+                # self.delete_first()
             else:
-                if self.last.next.item == data:
-                    return self.delete_first()
-                
-                temp=self.last.next 
-                while temp!=self.last:
-                    if temp.next == self.last:
-                        if self.last.item == data:
-                         self.delete_last()
-                         break
-                    if temp.item == data:
+                while temp.next is not None:
+                    if temp.next.item == data:
                         temp.next=temp.next.next
                         break
                     temp=temp.next
+    
+
+
+    # def delete_item(self,data):
+    #     if not self.is_empty():
+    #         if self.last.item == data:
+    #             self.last = None
+    #         else:
+    #             if self.last.next.item == data:
+    #                 return self.delete_first()
+                
+    #             temp=self.last.next 
+    #             while temp!=self.last:
+    #                 if temp.next == self.last:
+    #                     if self.last.item == data:
+    #                      self.delete_last()
+    #                      break
+    #                 if temp.item == data:
+    #                     temp.next=temp.next.next
+    #                     break
+    #                 temp=temp.next
 
 
 
