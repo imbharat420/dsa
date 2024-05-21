@@ -10,7 +10,7 @@ class Deque:
         self.rear=None
         self.item_count=0
     def is_empty(self):
-        return self.item_count==None
+        return self.item_count==0
     def insert_rear(self,item):
         n=Node(item,self.rear)
         if self.is_empty():
@@ -20,9 +20,9 @@ class Deque:
         self.rear=n
         self.item_count+=1
     def insert_front(self,item):
-        n=Node(item,self.front)
+        n=Node(item,None,self.front)
         if self.is_empty():
-            self.front=n
+            self.rear=n
         else:
             self.front.prev=n
         self.front=n
@@ -64,5 +64,13 @@ class Deque:
 
         
 
+cls=Deque()
+cls.insert_front(20)
+cls.insert_front(21)
+cls.insert_front(23)
+cls.insert_rear(29)
+cls.insert_rear(29)
+cls.insert_rear(39)
 
+print("size",cls.size(),"front",cls.get_front(),":  rear",cls.get_rear())
         
